@@ -64,6 +64,21 @@ pipeline{
                 }
             }
         }
+        stage('Push the changed deployment file to Git'){
+            steps{
+                script{
+                    sh """
+                    git config --global user.name "Aakarsh911"
+                    git config --global user.email "aakarsh99@icloud.com"
+                    git add deployment.yml
+                    git commit -m "Updated deployment file"
+                    """
+                    withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
+                        sh "git push https://github.com/Aakarsh911/dev-ops.git main"
+                    }
+                }
+            }
+        }
     }
 }
-//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
+//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
