@@ -11,7 +11,6 @@ spec:
       labels:
         app: flask-app
     spec:
-      replicas: 3
       containers:
       - name: flask-app-container
         image: aakarsh911/dev-ops:v1
